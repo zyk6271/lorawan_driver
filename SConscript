@@ -24,7 +24,7 @@ LoRaMacClassB.c
 LoRaMacAdr.c
 LoRaMac.c
 """)
-boadrds_src = Split("""
+boards_src = Split("""
 NvmCtxMgmt.c
 """)
 
@@ -36,7 +36,7 @@ path = [GetCurrentDir() + '/softse',
     GetCurrentDir() + '/boards']
 
 
-src = src + softse_src + mac_src + boadrds_src
+src = src + softse_src + mac_src + boards_src
 
 group = DefineGroup('RTT_LoRaWAN_Driver', src, depend = ['PKG_USING_RTT_LoRaWAN_Driver'], CPPPATH = path)
 
