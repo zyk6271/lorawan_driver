@@ -45,7 +45,7 @@ enum eDeviceState
     DEVICE_STATE_RXC,
     DEVICE_STATE_SLEEP
 }DeviceState;
-
+#ifdef BSP_USING_LoRaWAN_Example
 void LoRaWANEntry( void *parameter)
 {
     LoRaMacPrimitives_t macPrimitives;
@@ -359,3 +359,4 @@ static int lorawan(int argc, char ** argv)
     return 1;
 }
 MSH_CMD_EXPORT(lorawan, lorawan driver test);
+#endif

@@ -10,14 +10,18 @@
 #ifndef RF_APPLICATION_LORAWAN_CONFIG_H_
 #define RF_APPLICATION_LORAWAN_CONFIG_H_
 
-
+#ifdef REGION_CN470
 #define ACTIVE_REGION LORAMAC_REGION_CN470
+#elif  REGION_EU433
+#define ACTIVE_REGION LORAMAC_REGION_EU433
+#elif  REGION_EU868
+#define ACTIVE_REGION LORAMAC_REGION_EU868
+#endif
+
 
 #define APP_TX_DUTYCYCLE                            3000
 
 #define APP_TX_DUTYCYCLE_RND                        1000
-
-#define LORAWAN_DEFAULT_DATARATE                    DR_5
 
 #define LORAWAN_CONFIRMED_MSG_ON                    false
 
@@ -25,21 +29,28 @@
 
 #define LORAWAN_APP_DATA_MAX_SIZE                   242
 
-#define LORAWAN_APP_PORT                            3
-
-
 /*!
  * When set to 1 the application uses the Over-the-Air activation procedure
  * When set to 0 the application uses the Personalization activation procedure
  */
+#ifdef BSP_USING_LoRaWAN_OTAA
+#define OVER_THE_AIR_ACTIVATION                            0
+#else
 #define OVER_THE_AIR_ACTIVATION                            1
+#endif
 
 /*!
  * When set to 2 the application use Mode Class C
  * When set to 1 the application use Mode Class B
  * When set to 0 the application use Mode Class A
  */
+#ifdef BSP_USING_LoRaWAN_ClassA
+#define DEVICE_CLASS                                       0
+#elif  BSP_USING_LoRaWAN_ClassB
+#define DEVICE_CLASS                                       1
+#elif  BSP_USING_LoRaWAN_ClassC
 #define DEVICE_CLASS                                       2
+#endif
 /*!
  * When using ABP activation the MAC layer must know in advance to which server
  * version it will be connected.
