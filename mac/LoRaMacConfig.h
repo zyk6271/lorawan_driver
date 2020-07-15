@@ -10,7 +10,7 @@
 #ifndef RF_APPLICATION_LORAWAN_CONFIG_H_
 #define RF_APPLICATION_LORAWAN_CONFIG_H_
 
-#ifdef 	REGION_CN470
+#ifdef  LORAWAN_DRIVER_REGION_CN470
 #define ACTIVE_REGION LORAMAC_REGION_CN470
 #else
 #define ACTIVE_REGION LORAMAC_REGION_EU433
@@ -27,11 +27,15 @@
 
 #define LORAWAN_APP_DATA_MAX_SIZE                   242
 
+#define LORAWAN_DEFAULT_DATARATE                    LORAWAN_DRIVER_DEFAULT_DATARATE
+
+#define LORAWAN_APP_PORT                            LORAWAN_DRIVER_APP_PORT
+
 /*!
  * When set to 1 the application uses the Over-the-Air activation procedure
  * When set to 0 the application uses the Personalization activation procedure
  */
-#ifdef BSP_USING_LoRaWAN_ABP
+#ifdef LORAWAN_DRIVER_ABP
 #define OVER_THE_AIR_ACTIVATION                            0
 #else
 #define OVER_THE_AIR_ACTIVATION                            1
@@ -42,7 +46,7 @@
  * When set to 1 the application use Mode Class B
  * When set to 0 the application use Mode Class A
  */
-#ifdef BSP_USING_LoRaWAN_ClassA
+#ifdef LORAWAN_DRIVER_ClassA
 #define DEVICE_CLASS                                       0
 #elif  BSP_USING_LoRaWAN_ClassB
 #define DEVICE_CLASS                                       1
