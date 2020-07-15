@@ -1,6 +1,6 @@
-# RTT_LoRaWAN_Driver软件包
+# LoRaWAN_Driver软件包
 	#** 简介**
-	  RTT_LoRaWAN_Driver软件包是基于RTOS( RT-Thread ) 实现的接入LoRaWAN网络的驱动包，基于lora-radio驱动包可用于快速搭建基于LoRaWAN网络等通信的应用产品。
+	  LoRaWAN_Driver软件包是基于RTOS( RT-Thread ) 实现的接入LoRaWAN网络的驱动包，基于lora-radio驱动包可用于快速搭建基于LoRaWAN网络等通信的应用产品。
 
 	- 主要特点:
 	- 支持工作模式
