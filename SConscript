@@ -1,19 +1,22 @@
 Import('RTT_ROOT')
 from building import *
 
-src   = []
+boards_src   = []
+mac_src   = []
+samples_src   = []
+softse_src   = []
 cwd   = GetCurrentDir()
 
-src += Split("""
+softse_src = Split("""
 softse/aes.c
 softse/cmac.c
 softse/soft-se.c
 softse/utilities.c
 """)
-src += Split("""
+samples_src = Split("""
 samples/sample.c
 """)
-src += Split("""
+mac_src = Split("""
 mac/RegionCommon.c
 mac/RegionCN470.c
 mac/Region.c
@@ -27,7 +30,7 @@ mac/LoRaMacAdr.c
 mac/LoRaMac.c
 mac/LoRaMacFunc.c
 """)
-src += Split("""
+boards_src = Split("""
 boards/NvmCtxMgmt.c
 """)
 
@@ -41,6 +44,9 @@ path = [cwd + '/softse',
 
 #src = src + softse_src + mac_src + boards_src
 
-group = DefineGroup('RTT_LoRaWAN_Driver', src, depend = ['PKG_USING_RTT_LORAWAN_DRIVER'], CPPPATH = path)
+group = DefineGroup('rtt_lorawan_driver/boards', boards_src, depend = ['PKG_USING_RTT_LORAWAN_DRIVER'], CPPPATH = path)
+group = DefineGroup('rtt_lorawan_driver/mac', mac_src, depend = ['PKG_USING_RTT_LORAWAN_DRIVER'], CPPPATH = path)
+group = DefineGroup('rtt_lorawan_driver/softse', softse_src, depend = ['PKG_USING_RTT_LORAWAN_DRIVER'], CPPPATH = path)
+group = DefineGroup('rtt_lorawan_driver/samples', samples_src, depend = ['PKG_USING_RTT_LORAWAN_DRIVER'], CPPPATH = path)
 
 Return('group')
