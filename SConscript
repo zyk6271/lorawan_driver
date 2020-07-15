@@ -1,43 +1,47 @@
 Import('RTT_ROOT')
 from building import *
 
-softse_src = Split("""
-aes.c
-cmac.c
-soft-se.c
-utilities.c
+src   = []
+cwd   = GetCurrentDir()
+
+src += Split("""
+softse/aes.c
+softse/cmac.c
+softse/soft-se.c
+softse/utilities.c
 """)
-src = Split("""
-LoRaWAN-Func.c
-LoRaWAN-Run.c
+src += Split("""
+samples/sample.c
 """)
-mac_src = Split("""
-RegionCommon.c
-RegionCN470.c
-Region.c
-LoRaMacSerializer.c
-LoRaMacParser.c
-LoRaMacCrypto.c
-LoRaMacConfirmQueue.c
-LoRaMacCommands.c
-LoRaMacClassB.c
-LoRaMacAdr.c
-LoRaMac.c
+src += Split("""
+mac/RegionCommon.c
+mac/RegionCN470.c
+mac/Region.c
+mac/LoRaMacSerializer.c
+mac/LoRaMacParser.c
+mac/LoRaMacCrypto.c
+mac/LoRaMacConfirmQueue.c
+mac/LoRaMacCommands.c
+mac/LoRaMacClassB.c
+mac/LoRaMacAdr.c
+mac/LoRaMac.c
+mac/LoRaMacConfig.c
+mac/LoRaMacFunc.c
 """)
-boards_src = Split("""
-NvmCtxMgmt.c
+src += Split("""
+boards/NvmCtxMgmt.c
 """)
 
 
 # The set of source files associated with this SConscript file.
-path = [GetCurrentDir() + '/softse',
-    GetCurrentDir() + '/samples',
-    GetCurrentDir() + '/mac',
-    GetCurrentDir() + '/boards']
+path = [cwd + '/softse',
+    cwd + '/samples',
+    cwd + '/mac',
+    cwd + '/boards']
 
 
-src = src + softse_src + mac_src + boards_src
+#src = src + softse_src + mac_src + boards_src
 
-group = DefineGroup('RTT_LoRaWAN_Driver', src, depend = ['PKG_USING_RTT_LoRaWAN_Driver'], CPPPATH = path)
+group = DefineGroup('RTT_LoRaWAN_Driver', src, depend = ['PKG_USING_RTT_LORAWAN_DRIVER'], CPPPATH = path)
 
 Return('group')
