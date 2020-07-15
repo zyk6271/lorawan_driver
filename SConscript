@@ -42,8 +42,6 @@ path = [cwd + '/softse',
     cwd + '/boards']
 
 
-#src = src + softse_src + mac_src + boards_src
-
 group = DefineGroup('lorawan_driver/boards', boards_src, depend = ['PKG_USING_LORAWAN_DRIVER'], CPPPATH = path)
 group = DefineGroup('lorawan_driver/mac', mac_src, depend = ['PKG_USING_LORAWAN_DRIVER'], CPPPATH = path)
 group = DefineGroup('lorawan_driver/softse', softse_src, depend = ['PKG_USING_LORAWAN_DRIVER'], CPPPATH = path)
