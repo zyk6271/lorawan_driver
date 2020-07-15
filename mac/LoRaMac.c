@@ -412,22 +412,22 @@ static void OnRadioRxTimeout( void );
 /*!
  * \brief Function executed on duty cycle delayed Tx  timer event
  */
-static void OnTxDelayedTimerEvent( void* context );
+static void OnTxDelayedTimerEvent( void );
 
 /*!
  * \brief Function executed on first Rx window timer event
  */
-static void OnRxWindow1TimerEvent( void* context );
+static void OnRxWindow1TimerEvent( void );
 
 /*!
  * \brief Function executed on second Rx window timer event
  */
-static void OnRxWindow2TimerEvent( void* context );
+static void OnRxWindow2TimerEvent( void );
 
 /*!
  * \brief Function executed on AckTimeout timer event
  */
-static void OnAckTimeoutTimerEvent( void* context );
+static void OnAckTimeoutTimerEvent( void );
 
 /*!
  * \brief Configures the events to trigger an MLME-Indication with
@@ -914,7 +914,7 @@ static void PrepareRxDoneAbort( void )
 
     if( MacCtx.NodeAckRequested == true )
     {
-        OnAckTimeoutTimerEvent( NULL );
+        OnAckTimeoutTimerEvent( );
     }
 
     MacCtx.MacFlags.Bits.McpsInd = 1;
@@ -1304,14 +1304,14 @@ static void ProcessRadioRxDone( void )
     {
         if( MacCtx.McpsConfirm.AckReceived == true )
         {
-            OnAckTimeoutTimerEvent( NULL );
+            OnAckTimeoutTimerEvent( );
         }
     }
     else
     {
         if( MacCtx.NvmCtx->DeviceClass == CLASS_C )
         {
-            OnAckTimeoutTimerEvent( NULL );
+            OnAckTimeoutTimerEvent( );
         }
     }
     MacCtx.MacFlags.Bits.MacDone = 1;
@@ -1596,7 +1596,7 @@ static void LoRaMacHandleMcpsRequest( void )
             // Reset the state of the AckTimeout
             MacCtx.AckTimeoutRetry = false;
             // Sends the same frame again
-            OnTxDelayedTimerEvent( NULL );
+            OnTxDelayedTimerEvent( );
         }
     }
 }
@@ -1682,7 +1682,7 @@ void LoRaMacProcess( void )
     }
 }
 
-static void OnTxDelayedTimerEvent( void* context )
+static void OnTxDelayedTimerEvent( void )
 {
     TimerStop( &MacCtx.TxDelayedTimer );
     MacCtx.MacState &= ~LORAMAC_TX_DELAYED;
@@ -1708,7 +1708,7 @@ static void OnTxDelayedTimerEvent( void* context )
     }
 }
 
-static void OnRxWindow1TimerEvent( void* context )
+static void OnRxWindow1TimerEvent( void )
 {
     MacCtx.RxWindow1Config.Channel = MacCtx.Channel;
     MacCtx.RxWindow1Config.DrOffset = MacCtx.NvmCtx->MacParams.Rx1DrOffset;
@@ -1720,7 +1720,7 @@ static void OnRxWindow1TimerEvent( void* context )
     RxWindowSetup( &MacCtx.RxWindowTimer1, &MacCtx.RxWindow1Config );
 }
 
-static void OnRxWindow2TimerEvent( void* context )
+static void OnRxWindow2TimerEvent( void )
 {
     // Check if we are processing Rx1 window.
     // If yes, we don't setup the Rx2 window.
@@ -1738,7 +1738,7 @@ static void OnRxWindow2TimerEvent( void* context )
     RxWindowSetup( &MacCtx.RxWindowTimer2, &MacCtx.RxWindow2Config );
 }
 
-static void OnAckTimeoutTimerEvent( void* context )
+static void OnAckTimeoutTimerEvent( void )
 {
     TimerStop( &MacCtx.AckTimeoutTimer );
 
@@ -3279,10 +3279,10 @@ LoRaMacStatus_t LoRaMacInitialization( LoRaMacPrimitives_t* primitives, LoRaMacC
     MacCtx.NvmCtx->AggregatedTimeOff = 0;
 
     // Initialize timers
-    TimerInit( &MacCtx.TxDelayedTimer, (void *)OnTxDelayedTimerEvent );
-    TimerInit( &MacCtx.RxWindowTimer1, (void *)OnRxWindow1TimerEvent );
-    TimerInit( &MacCtx.RxWindowTimer2, (void *)OnRxWindow2TimerEvent );
-    TimerInit( &MacCtx.AckTimeoutTimer,(void *) OnAckTimeoutTimerEvent );
+    TimerInit( &MacCtx.TxDelayedTimer, OnTxDelayedTimerEvent );
+    TimerInit( &MacCtx.RxWindowTimer1, OnRxWindow1TimerEvent );
+    TimerInit( &MacCtx.RxWindowTimer2, OnRxWindow2TimerEvent );
+    TimerInit( &MacCtx.AckTimeoutTimer,OnAckTimeoutTimerEvent );
 
     // Store the current initialization time
     //MacCtx.NvmCtx->InitializationTime = SysTimeGetMcuTime( );

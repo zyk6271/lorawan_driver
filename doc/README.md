@@ -247,7 +247,7 @@ RT-Thread online packages --->
 |  --- | --- |
 | lorawan init | lorawan初始化 |
 | lorawan send <para1>| 数据发送 <para1>:要发送的数据|
-| lorawan cycle <para1> | 循环发送测试 <para1>:时间（ms） |
+| lorawan cycle <para1> | 循环发送测试 <para1>:时间（ms)（至少5秒）|
 | lorawan restart   | 重新开始配置LoRaWAN,状态机置初始位 |
 ## 3.3 实际测试示例
 图1：软件包命令help界面

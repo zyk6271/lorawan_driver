@@ -302,7 +302,7 @@ bool ConfirmedDataSend( uint8_t *buffer, uint8_t size, uint8_t nbtrials)//用户
     return true;
 }
 
-void OnTxNextPacketTimerEvent( void* context )
+void OnTxNextPacketTimerEvent( void )
 {
     MibRequestConfirm_t mibReq;
     LoRaMacStatus_t status;
@@ -459,7 +459,7 @@ void McpsIndication( McpsIndication_t *mcpsIndication )
 
     if( mcpsIndication->FramePending == true )
     {
-        OnTxNextPacketTimerEvent( NULL );
+        OnTxNextPacketTimerEvent( );
     }
 
     if( mcpsIndication->RxData == true )
@@ -554,13 +554,13 @@ void MlmeIndication( MlmeIndication_t *mlmeIndication )
     {
         case MLME_SCHEDULE_UPLINK:
         {
-            OnTxNextPacketTimerEvent( NULL );
+            OnTxNextPacketTimerEvent( );
             break;
         }
         default:
             break;
     }
 }
-void OnMacProcessNotify( )
+void OnMacProcessNotify(void)
 {
 }

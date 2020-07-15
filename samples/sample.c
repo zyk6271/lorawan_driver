@@ -139,7 +139,7 @@ void LoRaWANEntry( void *parameter)
 
             case DEVICE_STATE_START:
             {
-                if(TxNextPacketTimerFlag==0){TxNextPacketTimerFlag=1;TimerInit(&TxNextPacketTimer,(void *)OnTxNextPacketTimerEvent);}
+                if(TxNextPacketTimerFlag==0){TxNextPacketTimerFlag=1;TimerInit(&TxNextPacketTimer,OnTxNextPacketTimerEvent);}
 
                 LoRaMacStart();
 

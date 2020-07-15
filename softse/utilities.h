@@ -135,32 +135,12 @@ int8_t Nibble2HexChar( uint8_t a );
 /*!
  * Begins critical section
  */
-rt_base_t mask;
 #define CRITICAL_SECTION_BEGIN( ) rt_interrupt_enter()
 
 /*!
  * Ends critical section
  */
 #define CRITICAL_SECTION_END( ) rt_interrupt_leave()
-/*
- * ============================================================================
- * Following functions must be implemented inside the specific platform 
- * board.c file.
- * ============================================================================
- */
-/*!
- * Disable interrupts, begins critical section
- * 
- * \param [IN] mask Pointer to a variable where to store the CPU IRQ mask
- */
-void BoardCriticalSectionBegin( rt_base_t  mask );
-
-/*!
- * Ends critical section
- * 
- * \param [IN] mask Pointer to a variable where the CPU IRQ mask was stored
- */
-void BoardCriticalSectionEnd( rt_base_t  mask );
 
 #ifdef __cplusplus
 }

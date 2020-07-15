@@ -90,12 +90,3 @@ int8_t Nibble2HexChar( uint8_t a )
         return '?';
     }
 }
-void BoardCriticalSectionBegin( rt_base_t  mask )
-{
-    mask = rt_hw_interrupt_disable();
-}
-
-void BoardCriticalSectionEnd( rt_base_t mask )
-{
-    rt_hw_interrupt_enable(mask);
-}
