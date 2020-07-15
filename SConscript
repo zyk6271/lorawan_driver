@@ -25,7 +25,6 @@ mac/LoRaMacCommands.c
 mac/LoRaMacClassB.c
 mac/LoRaMacAdr.c
 mac/LoRaMac.c
-mac/LoRaMacConfig.c
 mac/LoRaMacFunc.c
 """)
 src += Split("""
