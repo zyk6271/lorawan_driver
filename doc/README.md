@@ -33,7 +33,7 @@
 			- [x] [ASR6500S ( SX1262 )]
 		- SX127X (SX1272\SX1276\SX1278..)
 			- [ ] [LSD4RF-2F717N20 ( SX1278 )]
-			- [ ] Ra-01 ( SX1278 )
+			- [ ] [Ra-01 ( SX1278 )]
 
 	- 当前测试LoRaSever平台:
 			- [x] [Chirpstack]
@@ -46,7 +46,7 @@
 			- [ ] V1.1.0
 
 
-## 1.1 RTT_LoRaWAN_Driver 软件包组织结构
+## 1.1 LoRaWAN_Driver 软件包组织结构
 	- boards
 		- \NvmCtxMgmt.c
 			- 非易失性存储器相关
@@ -90,7 +90,7 @@
 		- \utilities.c
 			- 相关工具
 
-# 2 RTT_LoRaWAN_Driver软件包使用说明
+# 2 LoRaWAN_Driver软件包使用说明
 
 ## 2.1 依赖
 
@@ -100,12 +100,12 @@
 		- 用于提供timerserver
 
 ## 2.2 获取软件包
-使用 RTT_LoRaWAN_Driver软件包，需要在 RT-Thread 的包管理中选中它，具体路径如下：<br />
+使用 LoRaWAN_Driver软件包，需要在 RT-Thread 的包管理中选中它，具体路径如下：<br />
 
 ```
 RT-Thread online packages --->
     iot --->
-        [*] RTT_LoRaWAN_Driver: Semtech LoRaMac driver. --->
+        [*] LoRaWAN_Driver: Semtech LoRaMac driver. --->
                 Version (latest)  --->
 ```
 
@@ -271,4 +271,4 @@ RT-Thread online packages --->
 
 # 4 问题和建议
 
-如果有什么问题或者建议欢迎提交 [Issue](https://github.com/zyk6271/RTT_LoRaWAN_Driver/issues) 进行讨论。
+如果有什么问题或者建议欢迎提交 [Issue](https://github.com/zyk6271/LoRaWAN_Driver/issues) 进行讨论。

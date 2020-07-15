@@ -36,7 +36,7 @@
 			- [x] [ASR6500S ( SX1262 )]
 		- SX127X (SX1272\SX1276\SX1278..)
 			- [ ] [LSD4RF-2F717N20 ( SX1278 )]
-			- [ ] Ra-01 ( SX1278 )
+			- [ ] [Ra-01 ( SX1278 )]
 
 	- 当前测试LoRaSever平台:
 			- [x] [Chirpstack]
