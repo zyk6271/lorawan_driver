@@ -44,9 +44,9 @@ path = [cwd + '/softse',
 
 #src = src + softse_src + mac_src + boards_src
 
-group = DefineGroup('rtt_lorawan_driver/boards', boards_src, depend = ['PKG_USING_RTT_LORAWAN_DRIVER'], CPPPATH = path)
-group = DefineGroup('rtt_lorawan_driver/mac', mac_src, depend = ['PKG_USING_RTT_LORAWAN_DRIVER'], CPPPATH = path)
-group = DefineGroup('rtt_lorawan_driver/softse', softse_src, depend = ['PKG_USING_RTT_LORAWAN_DRIVER'], CPPPATH = path)
-group = DefineGroup('rtt_lorawan_driver/samples', samples_src, depend = ['PKG_USING_RTT_LORAWAN_DRIVER'], CPPPATH = path)
+group = DefineGroup('lorawan_driver/boards', boards_src, depend = ['PKG_USING_LORAWAN_DRIVER'], CPPPATH = path)
+group = DefineGroup('lorawan_driver/mac', mac_src, depend = ['PKG_USING_LORAWAN_DRIVER'], CPPPATH = path)
+group = DefineGroup('lorawan_driver/softse', softse_src, depend = ['PKG_USING_LORAWAN_DRIVER'], CPPPATH = path)
+group = DefineGroup('lorawan_driver/samples', samples_src, depend = ['PKG_USING_LORAWAN_DRIVER'], CPPPATH = path)
 
 Return('group')
