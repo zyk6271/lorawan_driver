@@ -139,7 +139,7 @@
 #define AU915_RX_BEACON_SETUP( )
 #endif
 
-#ifdef REGION_CN470
+#ifdef LORAWAN_DRIVER_REGION_CN470
 #include "RegionCN470.h"
 #define CN470_CASE                                 case LORAMAC_REGION_CN470:
 #define CN470_IS_ACTIVE( )                         CN470_CASE { return true; }
@@ -247,7 +247,7 @@
 #define CN779_RX_BEACON_SETUP( )
 #endif
 
-#ifdef REGION_EU433
+#ifdef LORAWAN_DRIVER_REGION_EU433
 #include "RegionEU433.h"
 #define EU433_CASE                                 case LORAMAC_REGION_EU433:
 #define EU433_IS_ACTIVE( )                         EU433_CASE { return true; }

@@ -45,7 +45,7 @@ enum eDeviceState
     DEVICE_STATE_SLEEP
 }DeviceState;
 
-#ifdef BSP_USING_LoRaWAN_Example
+#ifdef LORAWAN_DRIVER_USING_Example
 void LoRaWANEntry( void *parameter)
 {
     LoRaMacPrimitives_t macPrimitives;
