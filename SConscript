@@ -19,6 +19,7 @@ samples/sample.c
 mac_src = Split("""
 mac/RegionCommon.c
 mac/RegionCN470.c
+mac/RegionEU433.c
 mac/Region.c
 mac/LoRaMacSerializer.c
 mac/LoRaMacParser.c

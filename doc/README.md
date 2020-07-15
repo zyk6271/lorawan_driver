@@ -17,6 +17,9 @@
 	- 支持接收方式
 		- [x] Unconfirmed DataDown
 		- [x] Confirmed DataDown
+	- 支持Region频段
+		- [x] EU433
+		- [x] CN470
 
 	- 可通过menuconfig定义LoRaWAN的几项重要通信参数，降低入门门槛
 	- 提供实例代码，可直接用于生产环境
@@ -31,13 +34,13 @@
 		- SX127X (SX1272\SX1276\SX1278..)
 			- [ ] [LSD4RF-2F717N20 ( SX1278 )]
 			- [ ] Ra-01 ( SX1278 )
-			
+
 	- 当前测试LoRaSever平台:
 			- [x] [Chirpstack]
 			- [ ] [Ali Cloud]
 			- [ ] [Tencent Cloud]
 			- [ ] [The Things Network]
-			
+
 	- 支持LoRaWAN协议版本
 			- [x] V1.0.3
 			- [ ] V1.1.0
@@ -112,7 +115,7 @@ RT-Thread online packages --->
 	3. 在非必要的情况下请勿对频段参数(RegionCN470.h)进行修改
 	4. 频段选择如果选择，来自radio，请开启radio包的example，两者频段定义有冲突，只可存在一个
 	5. 进行初始化后方可进行数据收发
-	
+
 
 ## 2.3 参数修改介绍
 	- \mac\LoRaMacConfig.h
@@ -236,7 +239,7 @@ RT-Thread online packages --->
 			NvmCtx.ChannelsDefaultMask[3] = 0x0;
 			NvmCtx.ChannelsDefaultMask[4] = 0x0;
 			NvmCtx.ChannelsDefaultMask[5] = 0x0;
-			
+
 		CN470频段分为96个频点，每8个频点对应一个BAND,如需修改设备所属的BAND，应对此进行修改，一共六组掩码，对应BAND1-BAND12.当前配置所显示的为BAND1,若NvmCtx.ChannelsDefaultMask[0]为0xFFFF则为BAND1,2同时选中，若NvmCtx.ChannelsDefaultMask[0]与NvmCtx.ChannelsDefaultMask[1]分别为0xFFFF，0xFF00则是选中BAND1,2,4，以此类推。
 # 3 使用示例
 ## 3.1 测试平台
