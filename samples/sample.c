@@ -4,9 +4,9 @@
 #include "LoRaMac.h"
 #include "NvmCtxMgmt.h"
 #include "string.h"
-#include "LoRaWAN-Run.h"
-#include "LoRaWan-Func.h"
-#include "LoRaWan-Config.h"
+#include "sample.h"
+#include "LoRaMacFunc.h"
+#include "LoRaMacConfig.h"
 #include <stdlib.h>
 
 #if( OVER_THE_AIR_ACTIVATION == 0 )
@@ -34,7 +34,6 @@ bool CycleFlag=0;
 bool TxNextPacketTimerFlag=0;
 uint32_t CycleTime=APP_TX_DUTYCYCLE;
 
-
 enum eDeviceState
 {
     DEVICE_STATE_RESTORE,
@@ -45,6 +44,7 @@ enum eDeviceState
     DEVICE_STATE_RXC,
     DEVICE_STATE_SLEEP
 }DeviceState;
+
 #ifdef BSP_USING_LoRaWAN_Example
 void LoRaWANEntry( void *parameter)
 {

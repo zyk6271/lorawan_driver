@@ -16,8 +16,11 @@
 	- 支持接收方式
 		- [x] Unconfirmed DataDown
 		- [x] Confirmed DataDown
+	- 支持LoRaWAN协议版本
+		- [x] V1.0.3
+		- [ ] V1.1.0
 
-	- 可通过menuconfig灵活定义LoRaWAN的各项通信参数，降低入门门槛
+	- 可通过menuconfig定义LoRaWAN的几项重要通信参数，降低入门门槛
 	- 提供实例代码，可直接用于生产环境
 	- 提供发送接受完成中断，进一步降低入门门槛
 	- 控制台可直接进行数据发送测试以及数据接收测试
@@ -31,3 +34,9 @@
 		- SX127X (SX1272\SX1276\SX1278..)
 			- [ ] [LSD4RF-2F717N20 ( SX1278 )]
 			- [ ] Ra-01 ( SX1278 )
+			
+	- 当前测试LoRaSever平台:
+			- [x] [Chirpstack]
+			- [ ] [Ali Cloud]
+			- [ ] [Tencent Cloud]
+			- [ ] [The Things Network]

@@ -18,7 +18,7 @@
 		- [x] Unconfirmed DataDown
 		- [x] Confirmed DataDown
 
-	- 可通过menuconfig灵活定义LoRaWAN的各项通信参数，降低入门门槛
+	- 可通过menuconfig定义LoRaWAN的几项重要通信参数，降低入门门槛
 	- 提供实例代码，可直接用于生产环境
 	- 提供发送接受完成中断，进一步降低入门门槛
 	- 控制台可直接进行数据发送测试以及数据接收测试
@@ -32,42 +32,52 @@
 		- SX127X (SX1272\SX1276\SX1278..)
 			- [ ] [LSD4RF-2F717N20 ( SX1278 )]
 			- [ ] Ra-01 ( SX1278 )
+			
+	- 当前测试LoRaSever平台:
+			- [x] [Chirpstack]
+			- [ ] [Ali Cloud]
+			- [ ] [Tencent Cloud]
+			- [ ] [The Things Network]
+			
+	- 支持LoRaWAN协议版本
+			- [x] V1.0.3
+			- [ ] V1.1.0
 
 
 ## 1.1 RTT_LoRaWAN_Driver 软件包组织结构
 	- boards
-		- \src\NvmCtxMgmt.c
+		- \NvmCtxMgmt.c
 			- 非易失性存储器相关
 	- mac
-		- \src\LoRaMac.c
+		- \LoRaMac.c
 			- LoRaWAN协议栈
-		- \src\LoRaMacAdr.c
+		- \LoRaMacAdr.c
 			- Adr速率自适应相关
-		- \src\LoRaMacClassB.c
+		- \LoRaMacClassB.c
 			- Class B模式相关
-		- \src\LoRaMacCommands.c
+		- \LoRaMacCommands.c
 			- LoRaWAN协议栈自带网络命令相关
-		- \src\LoRaMacConfirmQueue.c
+		- \LoRaMacConfirmQueue.c
 			- LoRaWAN数据确认队列
-		- \src\LoRaMacCrypto.c
+		- \LoRaMacCrypto.c
 			- LoRaWAN加密相关
-		- \src\LoRaMacParser.c
+		- \LoRaMacParser.c
 			- LoRaWAN数据解析相关
-		- \src\LoRaMacSerializer.c
+		- \LoRaMacSerializer.c
 			- LoRaWAN数据序列化相关
-		- \src\Region.c
+		- \Region.c
 			- 总频段集合
-		- \src\RegionCN470.c
+		- \RegionCN470.c
 			- CN470-510频段相关
-		- \src\RegionCommon.c
+		- \RegionCommon.c
 			- 频段共用函数相关
-	- samples
-		- \LoRaWAN-Func.c
+		- \LoRaMacFunc.c
 			- 各类回调函数入口
-		- \LoRaWAN-Run.c
-			- LoRaWAN初始化及主状态机
-		- \LoRaWAN-Config.h
+		- \LoRaMacConfig.h
 			- 网络参数
+	- samples
+		- \sample.c
+			- LoRaWAN初始化及主状态机例程
 	- softse
 		- \ase.c
 			- ase加密
@@ -104,7 +114,7 @@ RT-Thread online packages --->
 	4. 进行初始化后方可进行数据收发
 
 ## 2.3 参数修改介绍
-	- LoRaWAN-Config.h
+	- \mac\LoRaMacConfig.h
 		- ACTIVE_REGION
 			- 频段选择
 		- APP_TX_DUTYCYCLE
@@ -158,7 +168,7 @@ RT-Thread online packages --->
 
 ------------
 
-	RegionCN470.h
+	\mac\RegionCN470.h
 		- CN470_MAX_NB_CHANNELS
 			- 频段最大频道数
 		- CN470_TX_MIN_DATARATE
@@ -217,7 +227,7 @@ RT-Thread online packages --->
 ------------
 
 
-	RegionCN470.c
+	\mac\RegionCN470.c
 		- Line 377
 			NvmCtx.ChannelsDefaultMask[0] = 0x00FF;
 			NvmCtx.ChannelsDefaultMask[1] = 0x0;
@@ -225,12 +235,13 @@ RT-Thread online packages --->
 			NvmCtx.ChannelsDefaultMask[3] = 0x0;
 			NvmCtx.ChannelsDefaultMask[4] = 0x0;
 			NvmCtx.ChannelsDefaultMask[5] = 0x0;
-		对应BAND1-BAND12.当前为BAND1,若为0xFFFF则为BAND1,2同时选中，以此类推。
+			
+		CN470频段分为96个频点，每8个频点对应一个BAND,如需修改设备所属的BAND，应对此进行修改，一共六组掩码，对应BAND1-BAND12.当前配置所显示的为BAND1,若NvmCtx.ChannelsDefaultMask[0]为0xFFFF则为BAND1,2同时选中，若NvmCtx.ChannelsDefaultMask[0]与NvmCtx.ChannelsDefaultMask[1]分别为0xFFFF，0xFF00则是选中BAND1,2,4，以此类推。
 # 3 使用示例
 ## 3.1 测试平台
 	当前MCU：STM32L431CBT6
 	当前RF：ASR6500S(SX1262)
-	当前服务器：LoRaServer
+	当前服务器：LoRaServer(老版本的ChirpStack)
 ## 3.2 Finish测试命令
 | finish命令 | 说明 |
 |  --- | --- |

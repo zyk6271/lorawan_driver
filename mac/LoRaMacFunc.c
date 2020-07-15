@@ -7,9 +7,9 @@
  * Date           Author       Notes
  * 2020-07-13     Rick       the first version
  */
-#include "LoRaWan-Func.h"
-#include "LoRaWan-Run.h"
-#include "LoRaWan-Config.h"
+#include "LoRaMacFunc.h"
+#include "sample.h"
+#include "LoRaMacConfig.h"
 #include "rtthread.h"
 
 #if( OVER_THE_AIR_ACTIVATION == 0 )
@@ -170,7 +170,7 @@ void UserPrepareTxFrame( uint8_t port,uint8_t *buffer,uint8_t size )
         memcpy1(AppDataBuffer,buffer,sizeof(AppDataBuffer));
         AppDataSize = size;
 }
-bool SendFrame( void )
+bool SendFrame( void )//协议栈自用发送函数
 {
     McpsReq_t mcpsReq;
     LoRaMacTxInfo_t txInfo;
@@ -217,7 +217,7 @@ bool SendFrame( void )
     }
     return true;
 }
-bool DataSend( uint8_t *buffer, uint8_t size)
+bool DataSend( uint8_t *buffer, uint8_t size)//用户用发送函数（Unconfirmed Dataup）
 {
     McpsReq_t mcpsReq;
     LoRaMacTxInfo_t txInfo;
@@ -263,7 +263,7 @@ bool DataSend( uint8_t *buffer, uint8_t size)
     }
     return true;
 }
-bool ConfirmedDataSend( uint8_t *buffer, uint8_t size, uint8_t nbtrials)
+bool ConfirmedDataSend( uint8_t *buffer, uint8_t size, uint8_t nbtrials)//用户用发送函数（Confirmed Dataup）
 {
     McpsReq_t mcpsReq;
     LoRaMacTxInfo_t txInfo;

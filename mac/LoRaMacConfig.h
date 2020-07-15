@@ -33,7 +33,7 @@
  * When set to 1 the application uses the Over-the-Air activation procedure
  * When set to 0 the application uses the Personalization activation procedure
  */
-#ifdef BSP_USING_LoRaWAN_OTAA
+#ifdef BSP_USING_LoRaWAN_ABP
 #define OVER_THE_AIR_ACTIVATION                            0
 #else
 #define OVER_THE_AIR_ACTIVATION                            1
@@ -48,7 +48,7 @@
 #define DEVICE_CLASS                                       0
 #elif  BSP_USING_LoRaWAN_ClassB
 #define DEVICE_CLASS                                       1
-#elif  BSP_USING_LoRaWAN_ClassC
+#else
 #define DEVICE_CLASS                                       2
 #endif
 /*!
@@ -88,7 +88,7 @@
  * Application root key
  * WARNING: NOT USED FOR 1.0.x DEVICES
  */
-#define LORAWAN_APP_KEY                                    {0x07, 0x7e, 0xe4, 0x5c, 0x6e, 0x45, 0x64, 0xd9, 0x6d, 0x76, 0xae, 0x55, 0xaf, 0xd3, 0xaa, 0x89}
+#define LORAWAN_APP_KEY                                    LORAWAN_GEN_APP_KEY
 
 /*!
  * Application root key - Used to derive Multicast keys on 1.0.x devices.
@@ -110,29 +110,29 @@
 /*!
  * Device address on the network (big endian)
  */
-#define LORAWAN_DEVICE_ADDRESS                             ( uint32_t )0x20000005
+#define LORAWAN_DEVICE_ADDRESS                             ( uint32_t )0x22221111
 /*!
  * Forwarding Network session integrity key
  * WARNING: NWK_S_KEY FOR 1.0.x DEVICES
  */
-#define LORAWAN_F_NWK_S_INT_KEY                            { 0x2E, 0x8C, 0x86, 0x50, 0xB4, 0x04, 0x16, 0x72, 0xBB, 0xB9, 0xA3, 0x99, 0xF2, 0xDE, 0xB4, 0x27 }
+#define LORAWAN_F_NWK_S_INT_KEY                            { 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11 }
 
 /*!
  * Serving Network session integrity key
  * WARNING: NOT USED FOR 1.0.x DEVICES. MUST BE THE SAME AS \ref LORAWAN_F_NWK_S_INT_KEY
  */
-#define LORAWAN_S_NWK_S_INT_KEY                             { 0x2E, 0x8C, 0x86, 0x50, 0xB4, 0x04, 0x16, 0x72, 0xBB, 0xB9, 0xA3, 0x99, 0xF2, 0xDE, 0xB4, 0x27 }
+#define LORAWAN_S_NWK_S_INT_KEY                             LORAWAN_F_NWK_S_INT_KEY
 
 /*!
  * Network session encryption key
  * WARNING: NOT USED FOR 1.0.x DEVICES. MUST BE THE SAME AS \ref LORAWAN_F_NWK_S_INT_KEY
  */
-#define LORAWAN_NWK_S_ENC_KEY                               { 0x2E, 0x8C, 0x86, 0x50, 0xB4, 0x04, 0x16, 0x72, 0xBB, 0xB9, 0xA3, 0x99, 0xF2, 0xDE, 0xB4, 0x27 }
+#define LORAWAN_NWK_S_ENC_KEY                               LORAWAN_F_NWK_S_INT_KEY
 
 /*!
  * Application session key
  */
-#define LORAWAN_APP_S_KEY                                  { 0xEF, 0x6D, 0x6E, 0x25, 0x03, 0xF5, 0x7A, 0xE2, 0xFA, 0x15, 0x1C, 0xDA, 0x87, 0x45, 0x5F, 0x18 }
+#define LORAWAN_APP_S_KEY                                  { 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11 }
 
 
 #endif /* RF_APPLICATION_LORAWAN_CONFIG_H_ */
