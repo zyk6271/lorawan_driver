@@ -396,20 +396,10 @@ void McpsConfirm( McpsConfirm_t *mcpsConfirm )
     if( LoRaMacMibGetRequestConfirm( &mibGet ) == LORAMAC_STATUS_OK )
     {
         printf("CHANNEL MASK: ");
-#if defined( REGION_AS923 ) || defined( REGION_CN779 ) || \
-    defined( REGION_EU868 ) || defined( REGION_IN865 ) || \
-    defined( REGION_KR920 ) || defined( REGION_EU433 ) || \
-    defined( REGION_RU864 )
-
+#ifdef LORAWAN_DRIVER_REGION_EU433
         for( uint8_t i = 0; i < 1; i++)
-
-#elif defined( REGION_AU915 ) || defined( REGION_US915 ) || defined( REGION_CN470 )
-
-        for( uint8_t i = 0; i < 5; i++)
 #else
-
-#error "Please define a region in the compiler options."
-
+        for( uint8_t i = 0; i < 5; i++)
 #endif
         {
             printf("%04X ", mibGet.Param.ChannelsMask[i] );
