@@ -28,22 +28,22 @@
 
 	- 当前测试LoRa 模块\芯片:
 	- LoRa Transceiver (SPI):
-		- SX126X (SX1262\ASR6500S\LLCC68\SX1268..)
-			- [ ] [LSD4RF-2R717N40 ( SX1268 )]
-			- [x] [ASR6500S ( SX1262 )]
-		- SX127X (SX1272\SX1276\SX1278..)
-			- [ ] [LSD4RF-2F717N20 ( SX1278 )]
-			- [ ] [Ra-01 ( SX1278 )]
+	- SX126X (SX1262\ASR6500S\LLCC68\SX1268..)
+		- [ ] [LSD4RF-2R717N40 ( SX1268 )]
+		- [x] [ASR6500S ( SX1262 )]
+	- SX127X (SX1272\SX1276\SX1278..)
+		- [ ] [LSD4RF-2F717N20 ( SX1278 )]
+		- [ ] [Ra-01 ( SX1278 )]
 
 	- 当前测试LoRaSever平台:
-			- [x] [Chirpstack]
-			- [ ] [Ali Cloud]
-			- [ ] [Tencent Cloud]
-			- [ ] [The Things Network]
+		- [x] [Chirpstack]
+		- [ ] [Ali Cloud]
+		- [ ] [Tencent Cloud]
+		- [ ] [The Things Network]
 
 	- 支持LoRaWAN协议版本
-			- [x] V1.0.3
-			- [ ] V1.1.0
+		- [x] V1.0.3
+		- [ ] V1.1.0
 
 
 ## 1.1 LoRaWAN_Driver 软件包组织结构
