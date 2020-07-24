@@ -264,11 +264,11 @@ void LoRaWANEntry( void *parameter)
         rt_thread_mdelay(50);
     }
 }
-void SendDoneCallback(uint8_t *buffer)      //发送完成回调函数
+void SendDoneCallback(uint8_t *buffer,uint8_t size)      //发送完成回调函数
 {
     printf("\r\nSend Done\r\n");
 }
-void ReceiveDoneCallback(uint8_t *buffer)   //接收完成回调函数
+void ReceiveDoneCallback(uint8_t *buffer,uint8_t size)   //接收完成回调函数
 {
     printf("\r\nReceive Done\r\n");
 }

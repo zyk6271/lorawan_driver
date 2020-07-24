@@ -13,7 +13,7 @@
 #include "stdbool.h"
 
 void LoRaTaskInit(void);
-void SendDoneCallback(uint8_t *buffer);
-void ReceiveDoneCallback(uint8_t *buffer);
+void SendDoneCallback(uint8_t *buffer,uint8_t size);
+void ReceiveDoneCallback(uint8_t *buffer,uint8_t size);
 
 #endif /* APPLICATIONS_LORARUN_H_ */

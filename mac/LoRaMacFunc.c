@@ -359,7 +359,7 @@ void McpsConfirm( McpsConfirm_t *mcpsConfirm )
     mibReq.Type = MIB_DEVICE_CLASS;
     LoRaMacMibGetRequestConfirm( &mibReq );
 
-    SendDoneCallback(AppDataBuffer);
+    SendDoneCallback(AppDataBuffer,BufferSize);
 
     printf( "\r\n###### ===== UPLINK FRAME %lu ==== ######\r\n", mcpsConfirm->UpLinkCounter );
     printf( "\r\n" );
@@ -454,7 +454,7 @@ void McpsIndication( McpsIndication_t *mcpsIndication )
 
     if( mcpsIndication->RxData == true )
     {
-        ReceiveDoneCallback(mcpsIndication->Buffer);
+        ReceiveDoneCallback(mcpsIndication->Buffer,mcpsIndication->BufferSize);
     }
 
 
