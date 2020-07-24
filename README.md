@@ -1,6 +1,6 @@
 # LoRaWAN_Driver软件包
 	#** 简介**
-	  LoRaWAN_Driver软件包是基于RTOS( RT-Thread ) 实现的接入LoRaWAN网络的驱动包，基于lora-radio驱动包可用于快速搭建基于LoRaWAN网络等通信的应用产品。
+	  LoRaWAN_Driver软件包是基于RTOS( RT-Thread ) 实现的接入LoRaWAN网络的驱动包，基于lora_radio_driver软件包可用于快速搭建基于LoRaWAN网络等通信的应用产品。
 
 	- 主要特点:
 	- 支持工作模式
@@ -43,3 +43,5 @@
 		- [ ] [Ali Cloud]
 		- [ ] [Tencent Cloud]
 		- [ ] [The Things Network]
+		
+	如有使用上的问题，E-Mail:710454786@qq.com

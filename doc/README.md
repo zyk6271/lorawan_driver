@@ -1,52 +1,32 @@
-# LoRaWAN_Driver软件包
+# 1 LoRaWAN_Driver软件包使用说明
 
-# 1.0  简介
-	  LoRaWAN_Driver软件包是基于RTOS( RT-Thread ) 实现的接入LoRaWAN网络的驱动包，基于lora-radio驱动包可用于快速搭建基于LoRaWAN网络等通信的应用产品。
+## 1.1 依赖
+	- 依赖
+	  -  lora_radio_driver 软件包
+		- 用于提供RF驱动
+		- 用于提供timerserver
 
-	- 主要特点:
-	- 支持工作模式
-		- [x] Class A
-		- [ ] Class B
-		- [x] Class C
-	- 支持入网方式
-		- [x] ABP
-		- [x] OTAA
-	- 支持发送方式
-		- [x] Unconfirmed DataUp
-		- [x] Confirmed DataUp
-	- 支持接收方式
-		- [x] Unconfirmed DataDown
-		- [x] Confirmed DataDown
-	- 支持Region频段
-		- [x] EU433
-		- [x] CN470
+## 1.2 获取软件包
+使用 LoRaWAN_Driver软件包，需要在 RT-Thread 的包管理中选中它，具体路径如下：<br />
 
-	- 可通过menuconfig定义LoRaWAN的几项重要通信参数，降低入门门槛
-	- 提供实例代码，可直接用于生产环境
-	- 提供发送接受完成中断，进一步降低入门门槛
-	- 控制台可直接进行数据发送测试以及数据接收测试
+```
+RT-Thread online packages --->
+    iot --->
+        [*] LoRaWAN_Driver: Semtech LoRaMac driver. --->
+                Version (latest)  --->
+```
 
-	- 当前测试LoRa 模块\芯片:
-	- LoRa Transceiver (SPI):
-	- SX126X (SX1262\ASR6500S\LLCC68\SX1268..)
-		- [ ] [LSD4RF-2R717N40 ( SX1268 )]
-		- [x] [ASR6500S ( SX1262 )]
-	- SX127X (SX1272\SX1276\SX1278..)
-		- [ ] [LSD4RF-2F717N20 ( SX1278 )]
-		- [ ] [Ra-01 ( SX1278 )]
+	使用须知：
+	1. 在选择并配置好lora_radio_driver以后，通过radio的主从机测试，方可使用本软件包
+	2. 根据实际情况，进行网络参数的配置
+	3. 在非必要的情况下请勿对频段参数(RegionCN470.h)进行修改
+	4. radio包的example与当前例程，两者频段定义有冲突，只可存在一个频段定义
+	5. 进行初始化后方可进行数据收发
+	6. 如果编译后代码太大，可以开启Level 2优化，经测试可正常使用
+	7. Studio开发工具请勾选libC组件
+	8. 如需查看日志打开ulog组件
 
-	- 当前测试LoRaSever平台:
-		- [x] [Chirpstack]
-		- [ ] [Ali Cloud]
-		- [ ] [Tencent Cloud]
-		- [ ] [The Things Network]
-
-	- 支持LoRaWAN协议版本
-		- [x] V1.0.3
-		- [ ] V1.1.0
-
-
-## 1.1 LoRaWAN_Driver 软件包组织结构
+## 2.1 LoRaWAN_Driver 软件包组织结构
 	- boards
 		- \NvmCtxMgmt.c
 			- 非易失性存储器相关
@@ -89,36 +69,7 @@
 			- 加密函数
 		- \utilities.c
 			- 相关工具
-
-# 2 LoRaWAN_Driver软件包使用说明
-
-## 2.1 依赖
-
-	- 依赖
-	  -  lora-radio-driver 软件包
-		- 用于提供RF驱动
-		- 用于提供timerserver
-
-## 2.2 获取软件包
-使用 LoRaWAN_Driver软件包，需要在 RT-Thread 的包管理中选中它，具体路径如下：<br />
-
-```
-RT-Thread online packages --->
-    iot --->
-        [*] LoRaWAN_Driver: Semtech LoRaMac driver. --->
-                Version (latest)  --->
-```
-
-	使用须知：
-	1. 确认配置好radio-driver的情况下，通过radio的主从机测试，方可使用本软件包
-	2. 根据实际情况，进行网络参数的配置
-	3. 在非必要的情况下请勿对频段参数(RegionCN470.h)进行修改
-	4. radio包的example与当前例程，两者频段定义有冲突，只可存在一个频段定义
-	5. 进行初始化后方可进行数据收发
-	6. 如果编译后代码太大，可以开启Level 2优化，经测试可正常使用
-
-
-## 2.3 参数修改介绍
+## 2.2 参数修改介绍
 	- \mac\LoRaMacConfig.h
 		- ACTIVE_REGION
 			- 频段选择

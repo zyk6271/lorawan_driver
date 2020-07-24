@@ -45,7 +45,7 @@ enum eDeviceState
     DEVICE_STATE_SLEEP
 }DeviceState;
 
-#ifdef LORAWAN_DRIVER_USING_Example
+
 void LoRaWANEntry( void *parameter)
 {
     LoRaMacPrimitives_t macPrimitives;
@@ -272,7 +272,7 @@ void ReceiveDoneCallback(uint8_t *buffer)   //接收完成回调函数
 {
     printf("\r\nReceive Done\r\n");
 }
-
+#ifdef LORAWAN_DRIVER_USING_Example
 #define CMD_LORAWAN_INIT_INDEX       0
 #define CMD_LORAWAN_SEND_INDEX       1
 #define CMD_LORAWAN_RESTART_INDEX    2
