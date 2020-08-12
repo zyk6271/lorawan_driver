@@ -209,13 +209,13 @@ RT-Thread online packages --->
 ## 3.2 使用接口
 ### 3.2.1 发送完成回调
 samplec : Line 271 --> void SendDoneCallback(uint8_t *buffer,uint8_t size)
-说明：buffer内为接收到的数据，size为数据大小
+说明：buffer内为已经发送的数据，size为数据大小
 ### 3.2.2 接收完成回调
 samplec : Line 271 --> void ReceiveDoneCallback(uint8_t *buffer,uint8_t size)
-说明：buffer内为接收到的数据，size为数据大小
+说明：buffer内为已经接收到的数据，size为数据大小
 ### 3.2.3 数据发送接口
 LoRaMacFunc.c : Line 220 --> bool DataSend( uint8_t *buffer, uint8_t size)
-说明：buffer内为要发送的数据，size为数据大小
+说明：buffer内为即将要发送的数据，size为数据大小
 ## 3.4 实际测试示例
 图1：软件包命令help界面
 
