@@ -5,6 +5,7 @@
 	  -  lora_radio_driver 软件包
 		- 用于提供RF驱动
 		- 用于提供timerserver
+	  -  本软件包在2级优化下占用约9.4KB RAM + 60KB ROM(请注意所用MCU的内存情况)
 
 ## 1.2 获取软件包
 使用 LoRaWAN_Driver软件包，需要在 RT-Thread 的包管理中选中它，具体路径如下：<br />
