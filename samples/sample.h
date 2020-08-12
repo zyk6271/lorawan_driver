@@ -15,5 +15,6 @@
 void LoRaTaskInit(void);
 void SendDoneCallback(uint8_t *buffer,uint8_t size);
 void ReceiveDoneCallback(uint8_t *buffer,uint8_t size);
+void LoRaWanInit(void);
 
 #endif /* APPLICATIONS_LORARUN_H_ */

@@ -272,6 +272,18 @@ void ReceiveDoneCallback(uint8_t *buffer,uint8_t size)   //接收完成回调函
 {
     printf("\r\nReceive Done\r\n");
 }
+void LoRaWanInit(void)									//初始化函数
+{
+	static rt_thread_t tid1 = RT_NULL;
+	tid1 = rt_thread_create("LoRaWAN",LoRaWANEntry, RT_NULL,2048,5, 20);
+	if (tid1 != RT_NULL)
+	{
+		InitFlag=1;
+		rt_thread_startup(tid1);
+		rt_kprintf("\r\nLoRaWAN init success...\r\n");
+	}
+	else rt_kprintf("\r\nLoRaWAN init fail\r\n");
+}
 #ifdef LORAWAN_DRIVER_USING_Example
 #define CMD_LORAWAN_INIT_INDEX       0
 #define CMD_LORAWAN_SEND_INDEX       1
@@ -308,15 +320,7 @@ static int lorawan(int argc, char ** argv)
         if (!rt_strcmp(cmd, "init"))
         {
             rt_kprintf("LoRaWAN start init...\n");
-            static rt_thread_t tid1 = RT_NULL;
-            tid1 = rt_thread_create("LoRaWAN",LoRaWANEntry, RT_NULL,2048,5, 20);
-            if (tid1 != RT_NULL)
-            {
-                InitFlag=1;
-                rt_thread_startup(tid1);
-                rt_kprintf("\r\nLoRaWAN init success...\r\n");
-            }
-            else rt_kprintf("\r\nLoRaWAN init fail\r\n");
+			LoRaWanInit();
         }
         else if(!rt_strcmp(cmd, "send"))
         {

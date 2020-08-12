@@ -25,7 +25,7 @@ RT-Thread online packages --->
 	5. 进行初始化后方可进行数据收发
 	6. 如果编译后代码太大，可以开启Level 2优化，经测试可正常使用
 	7. Studio开发工具请勾选libC组件
-	8. 如需查看日志打开ulog组件
+	8. 如果选择不开启sample，请自行调用LoRaWANInit方法进行初始化
 
 ## 2.1 LoRaWAN_Driver 软件包组织结构
 	- boards
@@ -208,13 +208,13 @@ RT-Thread online packages --->
 | lorawan restart   | 重新开始配置LoRaWAN,状态机置初始位 |
 ## 3.2 使用接口
 ### 3.2.1 发送完成回调
-samplec:Line 271 --> void SendDoneCallback(uint8_t *buffer,uint8_t size)
+samplec : Line 271 --> void SendDoneCallback(uint8_t *buffer,uint8_t size)
 说明：buffer内为接收到的数据，size为数据大小
 ### 3.2.2 接收完成回调
-samplec:Line 271 --> void ReceiveDoneCallback(uint8_t *buffer,uint8_t size)
+samplec : Line 271 --> void ReceiveDoneCallback(uint8_t *buffer,uint8_t size)
 说明：buffer内为接收到的数据，size为数据大小
 ### 3.2.3 数据发送接口
-LoRaMacFunc.c:Line 220 --> bool DataSend( uint8_t *buffer, uint8_t size)
+LoRaMacFunc.c : Line 220 --> bool DataSend( uint8_t *buffer, uint8_t size)
 说明：buffer内为要发送的数据，size为数据大小
 ## 3.4 实际测试示例
 图1：软件包命令help界面
