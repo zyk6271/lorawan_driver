@@ -206,7 +206,17 @@ RT-Thread online packages --->
 | lorawan send <para1>| 数据发送 <para1>:要发送的数据|
 | lorawan cycle <para1> | 循环发送测试 <para1>:时间（ms)（至少5秒）|
 | lorawan restart   | 重新开始配置LoRaWAN,状态机置初始位 |
-## 3.3 实际测试示例
+## 3.2 使用接口
+### 3.2.1 发送完成回调
+samplec:Line 271 --> void SendDoneCallback(uint8_t *buffer,uint8_t size)
+说明：buffer内为接收到的数据，size为数据大小
+### 3.2.2 接收完成回调
+samplec:Line 271 --> void ReceiveDoneCallback(uint8_t *buffer,uint8_t size)
+说明：buffer内为接收到的数据，size为数据大小
+### 3.2.3 数据发送接口
+LoRaMacFunc.c:Line 220 --> bool DataSend( uint8_t *buffer, uint8_t size)
+说明：buffer内为要发送的数据，size为数据大小
+## 3.4 实际测试示例
 图1：软件包命令help界面
 
 ![](https://s1.ax1x.com/2020/07/14/UUnwgx.png)
