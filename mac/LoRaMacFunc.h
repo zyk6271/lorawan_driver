@@ -14,7 +14,6 @@
 #include "LoRaMac.h"
 #include "NvmCtxMgmt.h"
 #include "string.h"
-#include "sx126x.h"
 
 #ifndef RF_APPLICATION_SRC_LORAWAN_FUNC_H_
 #define RF_APPLICATION_SRC_LORAWAN_FUNC_H_
