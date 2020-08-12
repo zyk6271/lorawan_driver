@@ -4,24 +4,24 @@
 
 	- 主要特点:
 	- 支持工作模式
-		- [x] Class A
+		- [√] Class A
 		- [ ] Class B
-		- [x] Class C
+		- [√] Class C
 	- 支持入网方式
-		- [x] ABP
-		- [x] OTAA
+		- [√] ABP
+		- [√] OTAA
 	- 支持发送方式
-		- [x] Unconfirmed DataUp
-		- [x] Confirmed DataUp
+		- [√] Unconfirmed DataUp
+		- [√] Confirmed DataUp
 	- 支持接收方式
-		- [x] Unconfirmed DataDown
-		- [x] Confirmed DataDown
+		- [√] Unconfirmed DataDown
+		- [√] Confirmed DataDown
 	- 支持LoRaWAN协议版本
-		- [x] V1.0.3
+		- [√] V1.0.3
 		- [ ] V1.1.0
 	- 支持Region频段
-		- [x] EU433
-		- [x] CN470
+		- [√] EU433
+		- [√] CN470
 
 	- 可通过menuconfig定义LoRaWAN的几项重要通信参数，降低入门门槛
 	- 提供实例代码，可直接用于生产环境
@@ -33,15 +33,15 @@
 	- LoRa Transceiver (SPI):
 	- SX126X (SX1262\ASR6500S\LLCC68\SX1268..)
 		- [ ] [LSD4RF-2R717N40 ( SX1268 )]
-		- [x] [ASR6500S ( SX1262 )]
+		- [√] [ASR6500S ( SX1262 )]
 	- SX127X (SX1272\SX1276\SX1278..)
 		- [ ] [LSD4RF-2F717N20 ( SX1278 )]
 		- [ ] [Ra-01 ( SX1278 )]
 
 	- 当前测试LoRaSever平台:
-		- [x] [Chirpstack]
+		- [√] [Chirpstack]
 		- [ ] [Ali Cloud]
 		- [ ] [Tencent Cloud]
 		- [ ] [The Things Network]
-		
+
 	如有使用上的问题，E-Mail:710454786@qq.com
