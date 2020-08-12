@@ -208,18 +208,31 @@ RT-Thread online packages --->
 | lorawan restart   | 重新开始配置LoRaWAN,状态机置初始位 |
 ## 3.3 实际测试示例
 图1：软件包命令help界面
+
 ![](https://s1.ax1x.com/2020/07/14/UUnwgx.png)
+
 图2：ABP模式下初始化
+
 ![](https://s1.ax1x.com/2020/07/14/UUnaCR.png)
+
 图3：OTAA模式下初始化
+
 ![](https://s1.ax1x.com/2020/07/14/UUn0v6.png)
+
 图4：Class A模式下发送数据
+
 ![](https://s1.ax1x.com/2020/07/14/UUnN59.png)
+
 图5：Class A模式下发送并接收数据
+
 ![](https://s1.ax1x.com/2020/07/14/UUnd81.png)
+
 图6：Class C模式下发送数据
+
 ![](https://s1.ax1x.com/2020/07/14/UUntUJ.png)
+
 图7：Class C模式下接收数据
+
 ![](https://s1.ax1x.com/2020/07/14/UUnYE4.png)
 
 # 4 问题和建议
