@@ -21,11 +21,12 @@ RT-Thread online packages --->
 	1. 在选择并配置好lora_radio_driver以后，通过radio的主从机测试，方可使用本软件包
 	2. 根据实际情况，进行网络参数的配置
 	3. 在非必要的情况下请勿对频段参数(RegionCN470.h)进行修改
-	4. radio包的example与当前例程，两者频段定义有冲突，只可存在一个频段定义
+	4. radio包的example与当前例程，两者频段定义有冲突，只可存在一个频段定义，在开启lorawan的example后建议关闭lora-radio的example
 	5. 进行初始化后方可进行数据收发
 	6. 如果编译后代码太大，可以开启Level 2优化，经测试可正常使用
 	7. Studio开发工具请勾选libC组件
 	8. 如果选择不开启sample，请自行调用LoRaWANInit方法进行初始化
+	9. 如果在数据收发过程中发生hardfault，请注意调大Timer的栈[RT_TIMER_THREAD_STACK_SIZE]。
 
 ## 2.1 LoRaWAN_Driver 软件包组织结构
 	- boards
