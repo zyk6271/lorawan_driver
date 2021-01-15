@@ -588,7 +588,13 @@ bool RegionEU433RxConfig( RxConfigParams_t* rxConfig, int8_t* datarate )
     *datarate = (uint8_t) dr;
     return true;
 }
+static TimerTime_t GetTimeOnAir( int8_t datarate, uint16_t pktLen )
+{
+    int8_t phyDr = DataratesEU433[datarate];
+    uint32_t bandwidth = GetBandwidth( datarate );
 
+    return Radio.TimeOnAir( MODEM_LORA, bandwidth, phyDr, 1, 8, false, pktLen, true );
+}
 bool RegionEU433TxConfig( TxConfigParams_t* txConfig, int8_t* txPower, TimerTime_t* txTimeOnAir )
 {
     RadioModems_t modem;
@@ -617,7 +623,7 @@ bool RegionEU433TxConfig( TxConfigParams_t* txConfig, int8_t* txPower, TimerTime
     // Setup maximum payload lenght of the radio driver
     Radio.SetMaxPayloadLength( modem, txConfig->PktLen );
     // Get the time-on-air of the next tx frame
-    *txTimeOnAir = Radio.TimeOnAir( modem, txConfig->PktLen );
+    *txTimeOnAir = GetTimeOnAir( modem, txConfig->PktLen );
 
     *txPower = txPowerLimited;
     return true;
